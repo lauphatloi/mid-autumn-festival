@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Đêm Hội Trăng Rằm - Vui Tết Trung Thu | Yamaha Town Nam Tiến</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Floating Control Bar -->
+  <header class="top-controls">
+    <div class="control-group">
+      <button id="btnReplay" class="ctrl-btn" title="Xem lại chuỗi hiệu ứng xuất hiện">
+        <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M1 4v6h6M23 20v-6h-6"/>
+          <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+        </svg>
+        <span>Xem lại hiệu ứng</span>
+      </button>
+
+      <button id="btnMusic" class="ctrl-btn" title="Bật/Tắt âm thanh Trung Thu">
+        <svg class="ctrl-icon" id="iconMusic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+        <span id="musicText">Âm nhạc: Tắt</span>
+      </button>
+
+      <button id="btnToggleCharacters" class="ctrl-btn secondary" title="Ẩn/Hiện Chị Hằng & Chú Cuội">
+        <span>🎭 Chị Hằng & Cuội</span>
+      </button>
+    </div>
+
+    <div class="brand-badge-pill">
+      <span class="pulse-dot"></span>
+      <span>Đang diễn ra • Rằm Tháng 8</span>
+    </div>
+  </header>
+
+  <!-- Main Showcase Container -->
+  <main class="page-container">
+
+    <!-- Atmospheric Floating Characters (Outside / Overlapping Stage) -->
+    <aside class="character-wrapper chi-hang-float" id="charChiHang" title="Chị Hằng giáng trần">
+      <img src="element/image-idea/chi%20hang.png" alt="Chị Hằng" class="char-img">
+      <div class="char-bubble">
+        <span>✨ Chị Hằng chúc bạn Trung Thu đầm ấm, ngập tràn lộc may!</span>
+      </div>
+    </aside>
+
+    <aside class="character-wrapper chu-cuoi-float" id="charChuCuoi" title="Chú Cuội đón hội">
+      <img src="element/image-idea/chu%20cuoi.png" alt="Chú Cuội" class="char-img">
+      <div class="char-bubble">
+        <span>🏮 Chú Cuội rủ bạn ghé Yamaha Nam Tiến rước quà khủng nha!</span>
+      </div>
+    </aside>
+
+    <!-- Canvas for Floating Star Dust Particles -->
+    <canvas id="particleCanvas" class="ambient-particles"></canvas>
+
+    <!-- =======================================================
+         THE 1748x2480 FESTIVAL HERO STAGE (PIXEL-ACCURATE TO FRAME)
+         ======================================================= -->
+    <div class="festival-stage" id="festivalStage">
+
+      <!-- Layer 1: Background Universe Texture (0.0s) -->
+      <div class="layer-item layer-nen anim-phase-1" data-order="1">
+        <img src="element/image-idea/nen.png" alt="Bầu trời đêm Trung Thu" class="layer-img full-fit">
+      </div>
+
+      <!-- Twinkle Sparkle Stars (0.2s) -->
+      <div class="layer-item star-sparkle star-1 anim-phase-1" style="left: 12%; top: 14%;">
+        <img src="element/image-idea/ngoi%20sao.png" alt="Ngôi sao" class="sparkle-img">
+      </div>
+      <div class="layer-item star-sparkle star-2 anim-phase-1" style="left: 88%; top: 10%;">
+        <img src="element/image-idea/ngoi%20sao.png" alt="Ngôi sao" class="sparkle-img">
+      </div>
+      <div class="layer-item star-sparkle star-3 anim-phase-1" style="left: 72%; top: 60%;">
+        <img src="element/image-idea/ngoi%20sao.png" alt="Ngôi sao" class="sparkle-img">
+      </div>
+      <div class="layer-item star-sparkle star-4 anim-phase-1" style="left: 20%; top: 48%;">
+        <img src="element/image-idea/ngoi%20sao.png" alt="Ngôi sao" class="sparkle-img">
+      </div>
+
+      <!-- Layer 2: 3D Geometry Backdrop Frames (0.3s - 0.7s) -->
+      <div class="layer-item layer-khung-dai anim-phase-2" data-order="2">
+        <img src="element/image-idea/khung%20hinh%20dai.png" alt="Khung hình không gian" class="layer-img">
+      </div>
+
+      <div class="layer-item layer-khung-giua anim-phase-2" data-order="3">
+        <img src="element/image-idea/khung%20hinh%20giua.png" alt="Khung chấm bi neon" class="layer-img">
+      </div>
+
+      <!-- Neon Laser Light Beam Streak (0.5s) -->
+      <div class="layer-item layer-anh-sang anim-phase-2" data-order="4">
+        <img src="element/image-idea/anh%20sang.png" alt="Tia sáng neon" class="layer-img">
+      </div>
+
+      <!-- Layer 3: The Golden Full Moon (0.6s) -->
+      <div class="layer-item layer-trang anim-phase-3" data-order="5" id="moonElement">
+        <img src="element/image-idea/trang.png" alt="Mặt trăng rằm tháng 8" class="layer-img moon-spin-glow">
+        <div class="moon-aura"></div>
+      </div>
+
+      <!-- Layer 4: Top Branding Header (0.7s - 0.9s) -->
+      <div class="layer-item layer-logo anim-phase-4" data-order="6">
+        <img src="element/image-idea/LOGO%20yamaha%20town%20NT.png" alt="Logo Yamaha Town Nam Tiến" class="layer-img">
+      </div>
+
+      <div class="layer-item layer-brand-title anim-phase-4" data-order="7">
+        <img src="element/image-idea/yamaha%20town%20NT.png" alt="YAMAHA TOWN NAM TIẾN" class="layer-img">
+      </div>
+
+      <!-- Layer 5: Invitation & Grand 3D Festival Title (0.9s - 1.4s) -->
+      <div class="layer-item layer-thu-moi anim-phase-5" data-order="8">
+        <img src="element/image-idea/thu%20moi%20tham%20gia.png" alt="Thư mời tham gia" class="layer-img">
+      </div>
+
+      <div class="layer-item layer-dem-hoi anim-phase-5" data-order="9" id="titleDemHoi">
+        <img src="element/image-idea/dem%20hoi%20trang%20ram.png" alt="Đêm Hội Trăng Rằm" class="layer-img title-floating">
+      </div>
+
+      <!-- Layer 6: Tagline Ribbon Banner (1.3s) -->
+      <div class="layer-item layer-ribbon-tagline anim-phase-6" data-order="10">
+        <img src="element/image-idea/vui%20tet%20trung%20thu%20vui%20vung%20nam%20tien.png" alt="Vui tết Trung Thu - Vui cùng Nam Tiến" class="layer-img">
+      </div>
+
+      <!-- Layer 7: The Celestial Starlit Pathway (1.5s) -->
+      <div class="layer-item layer-cung-duong anim-phase-7" data-order="11">
+        <img src="element/image-idea/cung%20duong.png" alt="Cung đường ngân hà" class="layer-img road-shimmer">
+      </div>
+
+      <!-- Layer 8: Atmospheric Fluffy Clouds - Behind Characters & Cakes (1.6s - 2.0s) -->
+      <div class="layer-item cloud-layer cloud-m1 anim-phase-8">
+        <img src="element/image-idea/may1.png" alt="Mây" class="layer-img">
+      </div>
+      <div class="layer-item cloud-layer cloud-m5 anim-phase-8">
+        <img src="element/image-idea/may5.png" alt="Mây" class="layer-img">
+      </div>
+      <div class="layer-item cloud-layer cloud-m6 anim-phase-8">
+        <img src="element/image-idea/may6.png" alt="Mây" class="layer-img">
+      </div>
+      <div class="layer-item cloud-layer cloud-m4 anim-phase-8">
+        <img src="element/image-idea/may4.png" alt="Mây" class="layer-img">
+      </div>
+
+      <!-- Layer 9: The Three Festive Mooncakes (1.8s - 2.4s) -->
+      <!-- Mooncake 3 (Smallest - Upper curve of the road) -->
+      <div class="layer-item layer-cake cake-3 anim-phase-9" data-order="12" id="cake3" title="Click nhận quà bất ngờ!">
+        <img src="element/image-idea/banh%203.png" alt="Bánh trung thu 3" class="layer-img cake-hover">
+        <span class="cake-hint">Bấm mở quà 🎁</span>
+      </div>
+
+      <!-- Mooncake 2 (Medium - Mid road) -->
+      <div class="layer-item layer-cake cake-2 anim-phase-9" data-order="13" id="cake2" title="Click nhận quà bất ngờ!">
+        <img src="element/image-idea/banh%202.png" alt="Bánh trung thu 2" class="layer-img cake-hover">
+        <span class="cake-hint">Bấm mở quà 🎁</span>
+      </div>
+
+      <!-- Mooncake 1 (Large sliced cake - Foreground) -->
+      <div class="layer-item layer-cake cake-1 anim-phase-9" data-order="14" id="cake1" title="Click nhận quà đặc biệt!">
+        <img src="element/image-idea/banh%201.png" alt="Bánh trung thu 1" class="layer-img cake-hover">
+        <span class="cake-hint">Bánh Trăng Vàng 🥮</span>
+      </div>
+
+      <!-- Layer 10: Adorable Jade Rabbit (2.2s) -->
+      <div class="layer-item layer-tho-ngoc anim-phase-10" data-order="15" id="thoNgoc" title="Bấm vào Thỏ Ngọc để chào hỏi!">
+        <img src="element/image-idea/tho%20ngoc.png" alt="Thỏ Ngọc cung trăng" class="layer-img rabbit-bobbing">
+        <div class="rabbit-dialogue" id="rabbitDialogue">
+          <span>🐰 Thỏ Ngọc chào bạn! Chúc vạn sự như ý!</span>
+        </div>
+      </div>
+
+      <!-- Layer 11: Foreground Golden Clouds (2.3s) -->
+      <div class="layer-item cloud-layer cloud-m2 anim-phase-11">
+        <img src="element/image-idea/may2.png" alt="Mây vàng" class="layer-img">
+      </div>
+      <div class="layer-item cloud-layer cloud-m7 anim-phase-11">
+        <img src="element/image-idea/may7.png" alt="Mây vàng rực rỡ" class="layer-img">
+      </div>
+      <div class="layer-item cloud-layer cloud-m3 anim-phase-11">
+        <img src="element/image-idea/may%203.png" alt="Mây cuộn" class="layer-img">
+      </div>
+
+      <!-- Layer 12: THE CENTRAL FROSTED GLASS CARD (Interactive Event & Registration Card) (2.4s) -->
+      <section class="layer-item layer-frosted-card anim-phase-12" data-order="16" id="frostedCard">
+        <div class="glass-card-inner">
+
+          <!-- Card Header Image: Vui tết thiếu nhi - Người lớn cũng có Quà -->
+          <div class="card-hero-badge">
+            <img src="element/image-idea/vui%20tet%20trung%20thu%20nguoi%20lon%20cung%20co%20qua.png" 
+                 alt="Vui tết thiếu nhi - Người lớn cũng có Quà" 
+                 class="badge-graphic">
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Layer 13: Bottom Ambient Strip & Contact Hotline Bar (2.7s - 3.0s) -->
+      <div class="layer-item layer-frame-strip anim-phase-13">
+        <img src="element/image-idea/frame.png" alt="Chân viền" class="layer-img">
+      </div>
+
+      <footer class="layer-item layer-dia-chi anim-phase-13" data-order="17">
+        <a href="tel:0989704370" class="hotline-link" title="Gọi Hotline Yamaha Nam Tiến">
+          <img src="element/image-idea/dia%20chi%20hoteline.png" alt="Địa chỉ: 463B Nguyễn Thị Tú, P. Bình Hưng Hòa, TP.HCM / HOTLINE: 0989.704.370" class="layer-img">
+        </a>
+      </footer>
+
+    </div>
+    <!-- /festival-stage -->
+
+  </main>
+
+  <!-- =======================================================
+       REGISTRATION & LUCKY DRAW MODAL
+       ======================================================= -->
+  <div class="modal-overlay" id="registerModal" aria-hidden="true">
+    <div class="modal-box frosted-glass-deep">
+      <button class="modal-close" id="btnCloseModal" title="Đóng">&times;</button>
+      
+      <div class="modal-header">
+        <div class="modal-rabbit-badge">🐰🏮</div>
+        <h3 class="modal-title">ĐĂNG KÝ NHẬN QUÀ TRUNG THU</h3>
+        <p class="modal-subtitle">Yamaha Town Nam Tiến dành tặng riêng cho bạn và gia đình</p>
+      </div>
+
+      <form class="register-form" id="registerForm" onsubmit="event.preventDefault(); submitForm();">
+        <div class="form-group">
+          <label for="txtName">Họ và tên của bạn</label>
+          <input type="text" id="txtName" placeholder="Ví dụ: Nguyễn Văn A" required>
+        </div>
+
+        <div class="form-group">
+          <label for="txtPhone">Số điện thoại nhận quà</label>
+          <input type="tel" id="txtPhone" placeholder="Ví dụ: 0989 704 370" required pattern="[0-9]{10,11}">
+        </div>
+
+        <div class="form-group">
+          <label for="selBranch">Chọn địa điểm tham gia</label>
+          <select id="selBranch">
+            <option value="binh-hung-hoa">463B Nguyễn Thị Tú, P. Bình Hưng Hòa, TP.HCM</option>
+            <option value="tan-binh">Chi nhánh Tân Bình - Yamaha Town Nam Tiến</option>
+            <option value="quan-12">Chi nhánh Quận 12 - Yamaha Town Nam Tiến</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Quà tặng mong muốn</label>
+          <div class="gift-radio-group">
+            <label class="radio-chip">
+              <input type="radio" name="giftType" value="cake" checked>
+              <span>🥮 Hộp Bánh Trung Thu Cao Cấp</span>
+            </label>
+            <label class="radio-chip">
+              <input type="radio" name="giftType" value="voucher">
+              <span>🎟️ Voucher Bảo Dưỡng 500K</span>
+            </label>
+            <label class="radio-chip">
+              <input type="radio" name="giftType" value="lantern">
+              <span>🏮 Bộ Lồng Đèn Phát Sáng Cho Bé</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="modal-submit-btn shimmer-fx">
+          <span>XÁC NHẬN NHẬN QUÀ NGAY</span>
+        </button>
+      </form>
+
+      <div class="form-success-message" id="successBox" style="display: none;">
+        <div class="success-icon">🎉✨🥮</div>
+        <h4>ĐĂNG KÝ THÀNH CÔNG!</h4>
+        <p>Mã nhận quà của bạn: <strong class="gift-code">YAMAHA-TRUNGTHU-888</strong></p>
+        <p class="success-note">Vui lòng chụp lại màn hình hoặc lưu tin nhắn SMS để check-in tại showroom Yamaha Nam Tiến nhận quà nhé!</p>
+        <button class="modal-close-btn" onclick="closeModal()">Hoàn tất</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lucky Gift Popup when clicking mooncakes -->
+  <div class="gift-toast" id="giftToast">
+    <div class="gift-toast-icon">🥮</div>
+    <div class="gift-toast-content">
+      <strong id="toastTitle">Bạn nhận được quà bí mật!</strong>
+      <p id="toastDesc">Hộp bánh Kinh Đô Trăng Vàng cao cấp đang chờ bạn tại quầy check-in!</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
