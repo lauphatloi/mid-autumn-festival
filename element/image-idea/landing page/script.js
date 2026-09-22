@@ -10,9 +10,15 @@
   }
 
 
+  /* ==========================================================================
+     CẤU HÌNH GOOGLE APPS SCRIPT / GOOGLE SHEETS
+     Sau khi deploy Web App từ file google-apps-script.js, hãy dán URL vào đây:
+     Ví dụ: const GOOGLE_SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/.../exec';
+     ========================================================================== */
+  const GOOGLE_SHEET_SCRIPT_URL = '';
+
   // DOM Elements
   const festivalStage = document.getElementById('festivalStage');
-  const btnReplay = document.getElementById('btnReplay');
   const btnMusic = document.getElementById('btnMusic');
   const musicText = document.getElementById('musicText');
   const iconMusic = document.getElementById('iconMusic');
@@ -75,9 +81,7 @@
     showToast('Đang phát lại hiệu ứng!', 'Thưởng thức chuỗi xuất hiện mượt mà từng chi tiết ✨');
   }
 
-  if (btnReplay) {
-    btnReplay.addEventListener('click', replayEntrance);
-  }
+
 
   /* ==========================================================================
      2. COUNTDOWN TIMER TO TẾT TRUNG THU
@@ -219,11 +223,64 @@
     giftToast.addEventListener('click', scrollToRegister);
   }
 
-  window.submitForm = function () {
-    const name = document.getElementById('txtName').value.trim();
-    const phone = document.getElementById('txtPhone').value.trim();
+  window.submitForm = async function () {
+    const nameInput = document.getElementById('txtName');
+    const phoneInput = document.getElementById('txtPhone');
+    const name = nameInput ? nameInput.value.trim() : '';
+    const phone = phoneInput ? phoneInput.value.trim() : '';
 
     if (!name || !phone) return;
+
+    // Validate phone number format (10-11 digits)
+    const cleanPhone = phone.replace(/[\s.-]/g, '');
+    if (!/^[0-9]{10,11}$/.test(cleanPhone)) {
+      alert('Vui lòng nhập đúng định dạng số điện thoại (10 hoặc 11 chữ số)');
+      if (phoneInput) phoneInput.focus();
+      return;
+    }
+
+    const submitBtn = registerForm ? registerForm.querySelector('button[type="submit"]') : null;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>⏳ Đang gửi thông tin đăng ký...</span>';
+    }
+
+    // Dynamic unique gift code for attendee
+    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+    const uniqueGiftCode = `YAMAHA-TT-${randomSuffix}`;
+    const codeEl = document.querySelector('.gift-code');
+    if (codeEl) {
+      codeEl.textContent = uniqueGiftCode;
+    }
+
+    const deviceType = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      ? 'Điện thoại (Mobile)'
+      : 'Máy tính (Desktop)';
+
+    const payload = {
+      name: name,
+      phone: cleanPhone,
+      giftCode: uniqueGiftCode,
+      device: deviceType,
+      note: 'Đăng ký nhận quà Đêm Hội Trăng Rằm'
+    };
+
+    // Send data to Google Sheets Web App if URL is provided
+    if (GOOGLE_SHEET_SCRIPT_URL && GOOGLE_SHEET_SCRIPT_URL.trim() !== '') {
+      try {
+        await fetch(GOOGLE_SHEET_SCRIPT_URL.trim(), {
+          method: 'POST',
+          mode: 'no-cors',
+          cache: 'no-cache',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn('Lưu ý kết nối Google Sheet:', err);
+      }
+    }
 
     if (registerForm) registerForm.style.display = 'none';
     if (successBox) {
