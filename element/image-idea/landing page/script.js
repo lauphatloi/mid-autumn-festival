@@ -5,6 +5,10 @@
 
 (function () {
   'use strict';
+  if (new URLSearchParams(window.location.search).has('settled')) {
+    document.body.classList.add('skip-animations');
+  }
+
 
   // DOM Elements
   const festivalStage = document.getElementById('festivalStage');
