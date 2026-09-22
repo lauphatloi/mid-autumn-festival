@@ -15,7 +15,7 @@
      Sau khi deploy Web App từ file google-apps-script.js, hãy dán URL vào đây:
      Ví dụ: const GOOGLE_SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/.../exec';
      ========================================================================== */
-  const GOOGLE_SHEET_SCRIPT_URL = '';
+  const GOOGLE_SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwb3cQ5Bes9YR9Nlg4Cm5xHAO8xen8qOkTgt58xzsWs5U7-PinfgPaXzijcUyV4hfP9AA/exec';
 
   // DOM Elements
   const festivalStage = document.getElementById('festivalStage');
@@ -481,6 +481,106 @@
     }
 
     requestAnimationFrame(renderParticles);
+  }
+
+  /* ==========================================================================
+     9. GSAP SCROLL-DRIVEN CELESTIAL CHOREOGRAPHY
+     - Chị Hằng & mây bên trái tách mượt mà sang trái
+     - Chú Cuội & mây bên phải tách mượt mà sang phải
+     - Form đăng ký bên dưới từ từ đẩy smooth lên khi cuộn
+     - Trở về nguyên vẹn 100% bố cục gốc khi cuộn ngược lên đầu trang
+     ========================================================================== */
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const isMobile = window.innerWidth <= 768;
+
+    // Timeline 1: Stage Exit - Tách mây, Chị Hằng, Chú Cuội sang 2 bên
+    if (festivalStage) {
+      const stageTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: festivalStage,
+          start: 'top top',
+          end: 'bottom 20%',
+          scrub: 1,
+          invalidateOnRefresh: true
+        }
+      });
+
+      // 1. NHÁNH TRÁI: Mây bên trái & Chị Hằng cùng trôi mượt mà sang trái
+      const leftElements = ['.cloud-m2', '.cloud-m3'];
+      if (charChiHang) leftElements.push(charChiHang);
+
+      stageTimeline.to(leftElements, {
+        xPercent: isMobile ? -35 : -45,
+        yPercent: -10,
+        opacity: 0,
+        ease: 'power1.inOut'
+      }, 0);
+
+      // 2. NHÁNH PHẢI: Mây bên phải & Chú Cuội cùng trôi mượt mà sang phải
+      const rightElements = ['.cloud-m4', '.cloud-m4-base'];
+      if (charChuCuoi) rightElements.push(charChuCuoi);
+
+      stageTimeline.to(rightElements, {
+        xPercent: isMobile ? 35 : 45,
+        yPercent: -10,
+        opacity: 0,
+        ease: 'power1.inOut'
+      }, 0);
+
+      // 3. Mây vàng phát sáng và lớp mờ ảo ở giữa mờ dần
+      stageTimeline.to(['.stage-cloud-glow', '.cloud-dream-blur'], {
+        opacity: 0,
+        ease: 'power1.out'
+      }, 0);
+
+      // 4. Các chi tiết trung tâm trôi nhẹ và mờ dần
+      stageTimeline.to(['.layer-invitation-card', '.cake-1', '.cake-2', '.cake-3', '.layer-tho-ngoc'], {
+        yPercent: 20,
+        opacity: 0,
+        ease: 'power1.out'
+      }, 0);
+
+      // 5. Tiêu đề và dải ruy băng trôi lên nhẹ
+      stageTimeline.to(['.layer-dem-hoi', '.layer-ribbon-tagline'], {
+        yPercent: -15,
+        opacity: 0.25,
+        ease: 'power1.out'
+      }, 0);
+    }
+
+    // Timeline 2: Form đăng ký từ từ đẩy smooth lên khi cuộn tới
+    if (sectionRegister) {
+      const registerHeader = sectionRegister.querySelector('.section-header');
+      const formWrapperCard = sectionRegister.querySelector('.form-wrapper');
+
+      const registerTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRegister,
+          start: 'top 85%',
+          end: 'top 35%',
+          scrub: 1,
+          invalidateOnRefresh: true
+        }
+      });
+
+      if (registerHeader) {
+        registerTimeline.fromTo(registerHeader,
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, ease: 'power2.out' },
+          0
+        );
+      }
+
+      if (formWrapperCard) {
+        registerTimeline.fromTo(formWrapperCard,
+          { y: isMobile ? 60 : 90, opacity: 0.25, scale: 0.96 },
+          { y: 0, opacity: 1, scale: 1, ease: 'power2.out' },
+          0
+        );
+      }
+    }
   }
 
   console.log('🌕 Đêm Hội Trăng Rằm - Yamaha Town Nam Tiến loaded smoothly!');
