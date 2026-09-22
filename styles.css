@@ -307,10 +307,10 @@ html, body {
 
 /* Layer 6: Grand 3D Festival Title "ĐÊM HỘI TRĂNG RẰM" */
 .layer-dem-hoi {
-  top: 14.2%;
+  top: 13.0%;
   left: 50%;
   transform: translateX(-50%);
-  width: 73.5%;
+  width: 72.0%;
   z-index: 9;
 }
 
@@ -326,9 +326,10 @@ html, body {
 
 /* Layer 7: Tagline Ribbon */
 .layer-ribbon-tagline {
-  top: 31.8%;
-  left: 17.0%;
-  width: 66.0%;
+  top: 32.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64.0%;
   z-index: 10;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.5));
 }
@@ -590,6 +591,11 @@ html, body {
 }
 
 /* Layer 13: Golden Foreground Clouds & Hotline */
+.cloud-layer {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0.75) 75%, transparent 95%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0.75) 75%, transparent 95%);
+}
+
 .stage-cloud-glow {
   bottom: 0;
   left: 0;
@@ -623,11 +629,34 @@ html, body {
   z-index: 38;
 }
 
+.cloud-dream-blur {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 24%;
+  background: radial-gradient(
+    ellipse 100% 80% at 50% 100%, 
+    rgba(255, 190, 35, 0.8) 0%, 
+    rgba(240, 145, 20, 0.5) 40%, 
+    rgba(220, 100, 15, 0.18) 70%, 
+    transparent 100%
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  -webkit-mask-image: linear-gradient(to top, #000 35%, rgba(0, 0, 0, 0.65) 70%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 35%, rgba(0, 0, 0, 0.65) 70%, transparent 100%);
+  z-index: 41;
+  pointer-events: none;
+}
+
 .layer-frame-strip {
   bottom: 0;
   left: 0;
   width: 100%;
   z-index: 20;
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
 }
 
 .layer-dia-chi {
@@ -650,83 +679,83 @@ html, body {
 }
 
 /* ==========================================================================
-   STRETCHED-OUT GENTLE ENTRANCE ANIMATION PHASES (~18 SECONDS)
-   Each element appears smoothly and serenely one by one
+   ENERGIZED & ELEGANT SEQUENTIAL ENTRANCE ANIMATIONS (~4.8 SECONDS)
+   Smooth, professional succession where each element unfolds seamlessly
    ========================================================================== */
 
 /* Phase 1: Sky & Stars (0.0s) */
 .anim-phase-1 {
-  animation: entranceFadeIn 1.4s var(--ease-gentle) 0.0s both;
+  animation: entranceFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.0s both;
 }
 
-/* Phase 2: 3D Perspective Geometry Frames & Laser Streak (1.3s) */
+/* Phase 2: 3D Perspective Geometry Frames & Laser Streak (0.25s) */
 .anim-phase-2 {
-  animation: entranceScaleIn 1.5s var(--ease-gentle) 1.3s both;
+  animation: entranceScaleIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 
-/* Phase 3: Golden Full Moon Rise (2.6s) */
+/* Phase 3: Golden Full Moon Rise (0.55s) */
 .anim-phase-3 {
-  animation: entranceMoonRise 1.8s var(--ease-gentle) 2.6s both;
+  animation: entranceMoonRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
 }
 
-/* Phase 4: Yamaha Logo & Nam Tiến Brand Title (4.2s) */
+/* Phase 4: Yamaha Logo & Nam Tiến Brand Title (0.85s) */
 .anim-phase-4 {
-  animation: entranceSlideDown 1.4s var(--ease-gentle) 4.2s both;
+  animation: entranceSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
 }
 
-/* Phase 5: "THƯ MỜI THAM GIA" Cursive Drop (5.5s) */
+/* Phase 5: "THƯ MỜI THAM GIA" Cursive Drop (1.15s) */
 .anim-phase-5 {
-  animation: entranceTiltIn 1.4s var(--ease-gentle) 5.5s both;
+  animation: entranceTiltIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.15s both;
 }
 
-/* Phase 6: Grand 3D "ĐÊM HỘI TRĂNG RẰM" Title (6.8s) */
+/* Phase 6: Grand 3D "ĐÊM HỘI TRĂNG RẰM" Title (1.45s) */
 .anim-phase-6 {
-  animation: entrancePopTitle 1.8s var(--ease-gentle) 6.8s both;
+  animation: entrancePopTitle 0.75s cubic-bezier(0.16, 1, 0.3, 1) 1.45s both;
 }
 
-/* Phase 7: Tagline Ribbon Banner (8.4s) */
+/* Phase 7: Tagline Ribbon Banner (1.85s) */
 .anim-phase-7 {
-  animation: entranceRibbon 1.4s var(--ease-gentle) 8.4s both;
+  animation: entranceRibbon 0.65s cubic-bezier(0.16, 1, 0.3, 1) 1.85s both;
 }
 
-/* Phase 8: Celestial Pathway & Ambient Clouds (9.6s) */
+/* Phase 8: Celestial Pathway & Ambient Clouds (2.15s) */
 .anim-phase-8 {
-  animation: entranceRoadUnroll 1.6s var(--ease-gentle) 9.6s both;
+  animation: entranceRoadUnroll 0.75s cubic-bezier(0.16, 1, 0.3, 1) 2.15s both;
 }
 
-/* Phase 9: Central "KÍNH MỜI" Invitation Card (11.0s) */
+/* Phase 9: Central "KÍNH MỜI" Invitation Card (2.45s) */
 .anim-phase-9 {
-  animation: entranceCardFloat 1.8s var(--ease-gentle) 11.0s both;
+  animation: entranceCardFloat 0.75s cubic-bezier(0.16, 1, 0.3, 1) 2.45s both;
 }
 
-/* Phase 10: Chị Hằng & Chú Cuội Gentle Arrival (12.6s) */
+/* Phase 10: Chị Hằng & Chú Cuội Gentle Arrival (2.85s) */
 .layer-chi-hang.anim-phase-10 {
-  animation: entranceChiHang 2.0s var(--ease-gentle) 12.6s both;
+  animation: entranceChiHang 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.85s both;
 }
 
 .layer-chu-cuoi.anim-phase-10 {
-  animation: entranceChuCuoi 2.0s var(--ease-gentle) 12.6s both;
+  animation: entranceChuCuoi 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.85s both;
 }
 
-/* Phase 11: The Festive Mooncakes (14.4s) */
+/* Phase 11: The Festive Mooncakes (3.25s) */
 .cake-3.anim-phase-11 {
-  animation: entranceCakeDrop 1.2s var(--ease-gentle) 14.4s both;
+  animation: entranceCakeDrop 0.55s cubic-bezier(0.16, 1, 0.3, 1) 3.25s both;
 }
 .cake-2.anim-phase-11 {
-  animation: entranceCakeDrop 1.2s var(--ease-gentle) 14.8s both;
+  animation: entranceCakeDrop 0.55s cubic-bezier(0.16, 1, 0.3, 1) 3.45s both;
 }
 .cake-1.anim-phase-11 {
-  animation: entranceCakeDrop 1.4s var(--ease-gentle) 15.2s both;
+  animation: entranceCakeDrop 0.6s cubic-bezier(0.16, 1, 0.3, 1) 3.65s both;
 }
 
-/* Phase 12: Adorable Jade Rabbit Thỏ Ngọc (15.6s) */
+/* Phase 12: Adorable Jade Rabbit Thỏ Ngọc (3.85s) */
 .anim-phase-12 {
-  animation: entranceRabbitJump 1.4s var(--ease-gentle) 15.6s both;
+  animation: entranceRabbitJump 0.65s cubic-bezier(0.16, 1, 0.3, 1) 3.85s both;
 }
 
-/* Phase 13: Golden Clouds & Bottom Hotline Bar (16.8s) */
+/* Phase 13: Golden Clouds, Dream Blur & Bottom Hotline Bar (4.15s) */
 .anim-phase-13 {
-  animation: entranceSlideUp 1.4s var(--ease-gentle) 16.8s both;
+  animation: entranceSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 4.15s both;
 }
 
 /* --------------------------------------------------------------------------
@@ -1395,57 +1424,61 @@ html, body {
   }
 
   .layer-trang {
-    top: 4.8%;
+    top: 3.5%;
     right: 2%;
-    width: 36%;
+    width: 35%;
   }
 
   .layer-thu-moi {
-    top: 7.2%;
+    top: 6.8%;
     left: 14%;
-    width: 34%;
+    width: 32%;
   }
 
+  /* ĐÊM HỘI TRĂNG RẰM: Căn chính giữa, nâng nhẹ lên để tạo không gian thoáng bên dưới */
   .layer-dem-hoi {
-    top: 10.5%;
+    top: 8.2%;
     left: 50%;
     transform: translateX(-50%);
-    width: 94%;
-    max-width: 440px;
+    width: 90%;
+    max-width: 410px;
     z-index: 9;
   }
 
+  /* TAGLINE RIBBON: Đẩy xuống rõ rệt dưới chữ "Trăng Rằm", không bị đè chữ */
   .layer-ribbon-tagline {
-    top: 24.5%;
+    top: 29.2%;
     left: 50%;
     transform: translateX(-50%);
-    width: 82%;
+    width: 78%;
+    max-width: 340px;
+    z-index: 10;
   }
 
   /* Con đường: Phóng to ra để sao cho dưới chân chú Cuội và không lộ các góc (chỉ lộ đường cong) */
   .layer-cung-duong {
-    top: 34.0%;
-    left: -24%;
-    width: 215%;
+    top: 35.0%;
+    left: -22%;
+    width: 210%;
     height: auto;
     z-index: 11;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 93%);
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 93%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 94%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 94%);
   }
 
-  /* Central Invitation Card: Well-proportioned, leaving clean space on both sides */
+  /* Central Invitation Card: Đẩy xuống tương ứng để cân đối hoàn hảo với ribbon */
   .layer-invitation-card {
-    top: 35.5%;
+    top: 36.8%;
     left: 50%;
     transform: translateX(-50%);
-    width: 49%;
-    max-width: 250px;
+    width: 48%;
+    max-width: 245px;
     z-index: 26;
   }
 
   /* Chị Hằng: Vừa vặn bên trái, không chạm chữ thiệp mời, được mây che nhẹ gấu váy */
   .layer-chi-hang {
-    top: 46.0%;
+    top: 46.5%;
     left: -18%;
     width: 54%;
     max-width: 280px;
@@ -1454,7 +1487,7 @@ html, body {
 
   /* Chú Cuội: Chân đặt ngay trên mặt đường cong, được mây che nhẹ và cuộn sau lưng */
   .layer-chu-cuoi {
-    top: 48.5%;
+    top: 49.0%;
     right: -8%;
     width: 51%;
     max-width: 270px;
@@ -1470,29 +1503,29 @@ html, body {
 
   /* Mooncakes along celestial road - arranged to populate the center space */
   .cake-3 {
-    top: 60.0%;
+    top: 61.0%;
     left: 38.0%;
-    width: 8.0%;
+    width: 7.5%;
     z-index: 33;
   }
 
   .cake-2 {
-    top: 58.5%;
+    top: 59.0%;
     left: 53.0%;
-    width: 13.0%;
+    width: 12.5%;
     z-index: 33;
   }
 
   .cake-1 {
-    top: 66.0%;
+    top: 67.5%;
     left: 47.0%;
     width: 24.0%;
     z-index: 39;
   }
 
-  /* Thỏ Ngọc sitting in the middle space */
+  /* Thỏ Ngọc sitting in the middle space on golden cloud */
   .layer-tho-ngoc {
-    top: 64.0%;
+    top: 65.0%;
     left: 28.0%;
     width: 22.0%;
     z-index: 40;
@@ -1500,39 +1533,51 @@ html, body {
 
   /* Các đám mây vàng: Phóng to lên và bố trí che nhẹ Chị Hằng và Chú Cuội khớp mẫu flyer */
   .stage-cloud-glow {
-    height: 35%;
-    z-index: 33;
-  }
-
-  .cloud-m4 {
-    bottom: 14%;
-    right: -6%;
-    width: 190%;
-    z-index: 35;
-    filter: drop-shadow(0 0 25px rgba(255, 200, 30, 0.45));
+    height: 38%;
+    z-index: 32;
   }
 
   .cloud-m2 {
-    bottom: 16%;
-    left: -22%;
+    bottom: 4%;
+    left: -28%;
     width: 175%;
     z-index: 34;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, rgba(0, 0, 0, 0.5) 75%, transparent 92%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 55%, rgba(0, 0, 0, 0.5) 75%, transparent 92%);
+  }
+
+  .cloud-m4 {
+    bottom: 2%;
+    right: -18%;
+    width: 185%;
+    z-index: 35;
+    filter: drop-shadow(0 0 25px rgba(255, 200, 30, 0.45));
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0.5) 80%, transparent 95%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0.5) 80%, transparent 95%);
   }
 
   .cloud-m3 {
-    bottom: 12%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 165%;
+    bottom: 0%;
+    left: -35%;
+    width: 170%;
     z-index: 36;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 50%, rgba(0, 0, 0, 0.4) 75%, transparent 92%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 50%, rgba(0, 0, 0, 0.4) 75%, transparent 92%);
   }
 
   .cloud-m4-base {
-    bottom: 0;
+    bottom: -4%;
     left: -15%;
-    width: 170%;
+    width: 175%;
     z-index: 37;
     filter: drop-shadow(0 0 20px rgba(255, 200, 30, 0.4));
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 98%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 98%);
+  }
+
+  .cloud-dream-blur {
+    height: 24%;
+    z-index: 38;
   }
 
   .layer-frame-strip {
@@ -1540,6 +1585,8 @@ html, body {
     left: 0;
     width: 100%;
     z-index: 20;
+    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
   }
 
   .layer-dia-chi {
