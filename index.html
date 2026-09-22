@@ -157,26 +157,26 @@
       <!-- Mooncake 3 (Small piece - Upper curve of the road) -->
       <div class="layer-item layer-cake cake-3 anim-phase-11" data-order="15" id="cake3" title="Click nhận quà bất ngờ!">
         <img src="element/image-idea/banh%203.avif" alt="Bánh trung thu 3" class="layer-img cake-hover">
-        <span class="cake-hint">Bấm mở quà 🎁</span>
+        <span class="cake-hint">Bấm mở quà</span>
       </div>
 
       <!-- Mooncake 2 (Round whole cake - Mid road) -->
       <div class="layer-item layer-cake cake-2 anim-phase-11" data-order="16" id="cake2" title="Click nhận quà bất ngờ!">
         <img src="element/image-idea/banh%202.avif" alt="Bánh trung thu 2" class="layer-img cake-hover">
-        <span class="cake-hint">Bấm mở quà 🎁</span>
+        <span class="cake-hint">Bấm mở quà</span>
       </div>
 
       <!-- Mooncake 1 (Large sliced cake with filling - Foreground) -->
       <div class="layer-item layer-cake cake-1 anim-phase-11" data-order="17" id="cake1" title="Click nhận quà đặc biệt!">
         <img src="element/image-idea/banh%201.avif" alt="Bánh trung thu 1" class="layer-img cake-hover">
-        <span class="cake-hint">Bánh Trăng Vàng 🥮</span>
+        <span class="cake-hint">Bánh Trăng Vàng</span>
       </div>
 
       <!-- Layer 12: Adorable Jade Rabbit (Thỏ Ngọc) (Phase 12: 3.85s) -->
       <div class="layer-item layer-tho-ngoc anim-phase-12" data-order="18" id="thoNgoc" title="Bấm vào Thỏ Ngọc để chào hỏi!">
         <img src="element/image-idea/tho%20ngoc.avif" alt="Thỏ Ngọc cung trăng" class="layer-img rabbit-bobbing">
         <div class="rabbit-dialogue" id="rabbitDialogue">
-          <span>🐰 Thỏ Ngọc chào bạn! Chúc vạn sự như ý!</span>
+          <span>Thỏ Ngọc chào bạn! Chúc vạn sự như ý!</span>
         </div>
       </div>
 
@@ -223,9 +223,9 @@
       <!-- Section Decorative Header -->
       <div class="section-header">
         <div class="header-pill">
-          <span class="pill-sparkle">🏮</span>
+          <span class="pill-sparkle"></span>
           <span>ĐĂNG KÝ THAM DỰ & NHẬN QUÀ</span>
-          <span class="pill-sparkle">✨</span>
+          <span class="pill-sparkle"></span>
         </div>
         <h2 class="section-title">VUI TẾT TRUNG THU CÙNG NAM TIẾN</h2>
         <p class="section-desc">Đến tham gia "Đêm Hội Trăng Rằm" để rước đèn, phá cỗ và nhận ngay quà tặng đặc biệt!</p>
@@ -234,8 +234,8 @@
       <!-- Registration Form Box -->
       <div class="form-wrapper frosted-glass-deep">
         <div class="form-card-header">
-          <div class="rabbit-avatar">🐰🏮</div>
-          <h3>PHIẾU ĐĂNG KÝ CHECK-IN NHẬN QUÀ</h3>
+          <div class="rabbit-avatar"></div>
+          <h3>ĐĂNG KÝ CHECK-IN NHẬN QUÀ</h3>
           <p>Điền thông tin bên dưới để nhận mã quà tặng ưu tiên tại quầy đón khách</p>
         </div>
 
@@ -253,12 +253,12 @@
           </div>
 
           <button type="submit" class="submit-btn shimmer-fx">
-            <span>XÁC NHẬN ĐĂNG KÝ NHẬN QUÀ NGAY 🥮</span>
+            <span>XÁC NHẬN ĐĂNG KÝ NHẬN QUÀ NGAY</span>
           </button>
         </form>
 
         <div class="form-success-message" id="successBox" style="display: none;">
-          <div class="success-icon">🎉✨🥮</div>
+          <div class="success-icon"></div>
           <h4>ĐĂNG KÝ THÀNH CÔNG!</h4>
           <p>Mã nhận quà của bạn:</p>
           <div class="gift-code-badge">
@@ -273,7 +273,11 @@
         <!-- 2 Side-by-Side Action Buttons: Google Maps & Facebook Fanpage -->
         <div class="form-quick-actions">
           <a href="https://maps.app.goo.gl/VFrR3ZFQc4GeNnWLA" target="_blank" rel="noopener noreferrer" class="action-btn btn-map" title="Xem chỉ đường trên Google Maps">
-            <span class="btn-icon">📍</span>
+            <span class="btn-icon">
+              <svg class="map-svg-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+            </span>
             <div class="action-btn-text">
               <span class="btn-subtitle">Chỉ đường tới showroom</span>
               <strong class="btn-title">Google Maps</strong>
@@ -304,7 +308,7 @@
 
   <!-- Lucky Gift Popup when clicking mooncakes -->
   <div class="gift-toast" id="giftToast">
-    <div class="gift-toast-icon">🥮</div>
+    <div class="gift-toast-icon"></div>
     <div class="gift-toast-content">
       <strong id="toastTitle">Bạn nhận được quà bí mật!</strong>
       <p id="toastDesc">Hộp bánh Kinh Đô Trăng Vàng cao cấp đang chờ bạn tại quầy check-in!</p>
