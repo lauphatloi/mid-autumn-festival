@@ -1268,6 +1268,90 @@ html, body {
   transform: translateY(-2px);
 }
 
+/* Quick External Action Buttons: Google Maps & Facebook Fanpage */
+.form-quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 207, 36, 0.25);
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.25s var(--ease-gentle);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-map {
+  background: linear-gradient(135deg, rgba(234, 67, 53, 0.18), rgba(251, 188, 4, 0.15));
+  border: 1.5px solid rgba(251, 188, 4, 0.55);
+  color: #fff;
+}
+
+.btn-map:hover {
+  background: linear-gradient(135deg, rgba(234, 67, 53, 0.35), rgba(251, 188, 4, 0.3));
+  border-color: #fbbc04;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(251, 188, 4, 0.35);
+}
+
+.btn-fanpage {
+  background: linear-gradient(135deg, rgba(24, 119, 242, 0.2), rgba(168, 85, 247, 0.18));
+  border: 1.5px solid rgba(24, 119, 242, 0.6);
+  color: #fff;
+}
+
+.btn-fanpage:hover {
+  background: linear-gradient(135deg, rgba(24, 119, 242, 0.38), rgba(168, 85, 247, 0.3));
+  border-color: #1877f2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(24, 119, 242, 0.35);
+}
+
+.action-btn .btn-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.action-btn .fb-svg-icon {
+  fill: #1877f2;
+  filter: drop-shadow(0 0 8px rgba(24, 119, 242, 0.8));
+}
+
+.action-btn-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.action-btn-text .btn-subtitle {
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.action-btn-text .btn-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.25;
+}
+
 /* Footer Signature */
 .register-footer {
   text-align: center;
@@ -1605,24 +1689,6 @@ html, body {
     padding: 45px 14px 65px;
   }
 
-  .event-info-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-
-  .info-card {
-    padding: 10px 12px;
-    gap: 8px;
-  }
-
-  .info-icon {
-    font-size: 22px;
-  }
-
-  .info-val {
-    font-size: 12px;
-  }
-
   .form-wrapper {
     padding: 22px 16px;
     border-radius: 20px;
@@ -1636,6 +1702,36 @@ html, body {
   .submit-btn {
     font-size: 13.5px;
     padding: 13px 16px;
+  }
+
+  .form-quick-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 16px;
+  }
+
+  .action-btn {
+    padding: 10px 8px;
+    gap: 7px;
+    border-radius: 12px;
+  }
+
+  .action-btn-text .btn-subtitle {
+    font-size: 8.5px;
+  }
+
+  .action-btn-text .btn-title {
+    font-size: 11.5px;
+  }
+
+  .action-btn .btn-icon {
+    font-size: 18px;
+  }
+
+  .action-btn .fb-svg-icon {
+    width: 18px;
+    height: 18px;
   }
 }
 
