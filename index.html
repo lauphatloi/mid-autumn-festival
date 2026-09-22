@@ -129,12 +129,14 @@
       </div>
 
       <!-- Layer 9: THE CENTRAL INVITATION CARD (KÍNH MỜI) (Phase 9: 11.0s) -->
-      <section class="layer-item layer-invitation-card anim-phase-9" data-order="12" id="invitationCard" title="Bấm vào thiệp để đăng ký nhận quà Trung Thu!">
+      <section class="layer-item layer-invitation-card anim-phase-9" data-order="12" id="invitationCard" title="Bấm vào thiệp để cuộn xuống đăng ký nhận quà!">
         <div class="invitation-card-inner card-clickable" id="btnOpenRegister">
           <img src="element/image-idea/the-kinh-moi-full.png" 
                alt="Kính Mời - Quý phụ huynh và các bé đến tham dự chương trình Đêm Hội Trăng Rằm - Diễn ra: 18H30 - 24/09" 
                class="invitation-img">
-
+          <div class="card-tap-cue">
+            <span>👇 Chạm thiệp nhận quà</span>
+          </div>
         </div>
       </section>
 
@@ -182,14 +184,11 @@
       </div>
 
       <!-- Layer 13: Golden Clouds wrapping under characters & Foreground (Phase 13: 16.8s) -->
-      <div class="layer-item cloud-layer cloud-m4 anim-phase-13">
-        <img src="element/image-idea/may4.png" alt="Mây vàng rực rỡ" class="layer-img">
-      </div>
       <div class="layer-item cloud-layer cloud-m2 anim-phase-13">
         <img src="element/image-idea/may2.png" alt="Mây vàng" class="layer-img">
       </div>
-      <div class="layer-item cloud-layer cloud-m7 anim-phase-13">
-        <img src="element/image-idea/may7.png" alt="Mây vàng" class="layer-img">
+      <div class="layer-item cloud-layer cloud-m4 anim-phase-13">
+        <img src="element/image-idea/may4.png" alt="Mây vàng rực rỡ" class="layer-img">
       </div>
       <div class="layer-item cloud-layer cloud-m3 anim-phase-13">
         <img src="element/image-idea/may%203.png" alt="Mây cuộn" class="layer-img">
@@ -212,70 +211,135 @@
   </main>
 
   <!-- =======================================================
-       REGISTRATION & LUCKY DRAW MODAL
+       REGISTRATION SECTION (INLINE SCROLL-DOWN FORM)
        ======================================================= -->
-  <div class="modal-overlay" id="registerModal" aria-hidden="true">
-    <div class="modal-box frosted-glass-deep">
-      <button class="modal-close" id="btnCloseModal" title="Đóng">&times;</button>
+  <section class="section-register" id="sectionRegister">
+    <div class="register-container">
       
-      <div class="modal-header">
-        <div class="modal-rabbit-badge">🐰🏮</div>
-        <h3 class="modal-title">ĐĂNG KÝ NHẬN QUÀ TRUNG THU</h3>
-        <p class="modal-subtitle">Yamaha Town Nam Tiến dành tặng riêng cho bạn và gia đình</p>
+      <!-- Section Decorative Header -->
+      <div class="section-header">
+        <div class="header-pill">
+          <span class="pill-sparkle">🏮</span>
+          <span>ĐĂNG KÝ THAM DỰ & NHẬN QUÀ</span>
+          <span class="pill-sparkle">✨</span>
+        </div>
+        <h2 class="section-title">VUI TẾT TRUNG THU CÙNG NAM TIẾN</h2>
+        <p class="section-desc">Đến tham gia "Đêm Hội Trăng Rằm" để rước đèn, phá cỗ và nhận ngay quà tặng đặc biệt!</p>
       </div>
 
-      <form class="register-form" id="registerForm" onsubmit="event.preventDefault(); submitForm();">
-        <div class="form-group">
-          <label for="txtName">Họ và tên của bạn</label>
-          <input type="text" id="txtName" placeholder="Ví dụ: Nguyễn Văn A" required>
-        </div>
-
-        <div class="form-group">
-          <label for="txtPhone">Số điện thoại nhận quà</label>
-          <input type="tel" id="txtPhone" placeholder="Ví dụ: 0989 704 370" required pattern="[0-9]{10,11}">
-        </div>
-
-        <div class="form-group">
-          <label for="selBranch">Chọn địa điểm tham gia</label>
-          <select id="selBranch">
-            <option value="binh-hung-hoa">463B Nguyễn Thị Tú, P. Bình Hưng Hòa, TP.HCM</option>
-            <option value="tan-binh">Chi nhánh Tân Bình - Yamaha Town Nam Tiến</option>
-            <option value="quan-12">Chi nhánh Quận 12 - Yamaha Town Nam Tiến</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Quà tặng mong muốn</label>
-          <div class="gift-radio-group">
-            <label class="radio-chip">
-              <input type="radio" name="giftType" value="cake" checked>
-              <span>🥮 Hộp Bánh Trung Thu Cao Cấp</span>
-            </label>
-            <label class="radio-chip">
-              <input type="radio" name="giftType" value="voucher">
-              <span>🎟️ Voucher Bảo Dưỡng 500K</span>
-            </label>
-            <label class="radio-chip">
-              <input type="radio" name="giftType" value="lantern">
-              <span>🏮 Bộ Lồng Đèn Phát Sáng Cho Bé</span>
-            </label>
+      <!-- Quick Event Info Cards -->
+      <div class="event-info-grid">
+        <div class="info-card">
+          <div class="info-icon">⏰</div>
+          <div class="info-body">
+            <span class="info-label">Thời gian diễn ra</span>
+            <strong class="info-val">18H30 • 24/09</strong>
           </div>
         </div>
 
-        <button type="submit" class="modal-submit-btn shimmer-fx">
-          <span>XÁC NHẬN NHẬN QUÀ NGAY</span>
-        </button>
-      </form>
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div class="info-body">
+            <span class="info-label">Địa điểm tổ chức</span>
+            <strong class="info-val">463B Nguyễn Thị Tú, P. Bình Hưng Hòa</strong>
+          </div>
+        </div>
 
-      <div class="form-success-message" id="successBox" style="display: none;">
-        <div class="success-icon">🎉✨🥮</div>
-        <h4>ĐĂNG KÝ THÀNH CÔNG!</h4>
-        <p>Mã nhận quà của bạn: <strong class="gift-code">YAMAHA-TRUNGTHU-888</strong></p>
-        <p class="success-note">Vui lòng chụp lại màn hình hoặc lưu tin nhắn SMS để check-in tại showroom Yamaha Nam Tiến nhận quà nhé!</p>
-        <button class="modal-close-btn" onclick="closeModal()">Hoàn tất</button>
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <div class="info-body">
+            <span class="info-label">Hotline hỗ trợ</span>
+            <a href="tel:0989704370" class="info-val hotline-highlight">0989.704.370</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🎁</div>
+          <div class="info-body">
+            <span class="info-label">Đặc quyền khách mời</span>
+            <strong class="info-val">100% Khách tham quan có quà</strong>
+          </div>
+        </div>
       </div>
+
+      <!-- Registration Form Box -->
+      <div class="form-wrapper frosted-glass-deep">
+        <div class="form-card-header">
+          <div class="rabbit-avatar">🐰🏮</div>
+          <h3>PHIẾU ĐĂNG KÝ CHECK-IN NHẬN QUÀ</h3>
+          <p>Điền thông tin bên dưới để nhận mã quà tặng ưu tiên tại quầy đón khách</p>
+        </div>
+
+        <form class="register-form" id="registerForm" onsubmit="event.preventDefault(); submitForm();">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="txtName">Họ và tên của bạn *</label>
+              <input type="text" id="txtName" placeholder="Ví dụ: Nguyễn Văn A" required autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="txtPhone">Số điện thoại nhận mã quà *</label>
+              <input type="tel" id="txtPhone" placeholder="Ví dụ: 0989 704 370" required pattern="[0-9]{10,11}" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="selBranch">Chọn chi nhánh tham dự thuận tiện nhất *</label>
+            <select id="selBranch">
+              <option value="binh-hung-hoa">Yamaha Town Nam Tiến - 463B Nguyễn Thị Tú, P. Bình Hưng Hòa, TP.HCM</option>
+              <option value="tan-binh">Yamaha Town Nam Tiến - Chi nhánh Tân Bình</option>
+              <option value="quan-12">Yamaha Town Nam Tiến - Chi nhánh Quận 12</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Chọn phần quà Trung Thu mong muốn *</label>
+            <div class="gift-radio-group">
+              <label class="radio-chip">
+                <input type="radio" name="giftType" value="cake" checked>
+                <span class="radio-custom"></span>
+                <span class="radio-text">🥮 Hộp Bánh Trung Thu Kinh Đô Trăng Vàng Cao Cấp</span>
+              </label>
+              <label class="radio-chip">
+                <input type="radio" name="giftType" value="voucher">
+                <span class="radio-custom"></span>
+                <span class="radio-text">🎟️ Voucher Bảo Dưỡng & Dịch Vụ Xe Máy Trị Giá 500K</span>
+              </label>
+              <label class="radio-chip">
+                <input type="radio" name="giftType" value="lantern">
+                <span class="radio-custom"></span>
+                <span class="radio-text">🏮 Bộ Lồng Đèn Phát Sáng Âm Thanh Rực Rỡ Cho Bé</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn shimmer-fx">
+            <span>XÁC NHẬN ĐĂNG KÝ NHẬN QUÀ NGAY 🥮</span>
+          </button>
+        </form>
+
+        <div class="form-success-message" id="successBox" style="display: none;">
+          <div class="success-icon">🎉✨🥮</div>
+          <h4>ĐĂNG KÝ THÀNH CÔNG!</h4>
+          <p>Mã nhận quà của bạn:</p>
+          <div class="gift-code-badge">
+            <span class="gift-code">YAMAHA-TRUNGTHU-888</span>
+          </div>
+          <p class="success-note">Vui lòng chụp lại màn hình hoặc lưu mã để check-in tại showroom Yamaha Nam Tiến vào ngày 24/09 để nhận quà bạn nhé!</p>
+          <button type="button" class="btn-scroll-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+            ↑ Quay lại đầu trang
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Brand Signature -->
+      <div class="register-footer">
+        <p class="copyright-text">© 2024 YAMAHA TOWN NAM TIẾN • ĐÊM HỘI TRĂNG RẰM</p>
+        <p class="slogan-text">Vui Tết Trung Thu - Người Lớn Cũng Có Quà</p>
+      </div>
+
     </div>
-  </div>
+  </section>
 
   <!-- Lucky Gift Popup when clicking mooncakes -->
   <div class="gift-toast" id="giftToast">

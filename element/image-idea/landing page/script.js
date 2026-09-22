@@ -22,8 +22,8 @@
   const thoNgoc = document.getElementById('thoNgoc');
   const rabbitDialogue = document.getElementById('rabbitDialogue');
   const btnOpenRegister = document.getElementById('btnOpenRegister');
-  const registerModal = document.getElementById('registerModal');
-  const btnCloseModal = document.getElementById('btnCloseModal');
+  const invitationCard = document.getElementById('invitationCard');
+  const sectionRegister = document.getElementById('sectionRegister');
   const registerForm = document.getElementById('registerForm');
   const successBox = document.getElementById('successBox');
   const giftToast = document.getElementById('giftToast');
@@ -190,44 +190,46 @@
   }
 
   /* ==========================================================================
-     5. MODAL FORM INTERACTION
+     5. SMOOTH SCROLL TO REGISTRATION FORM & SUBMISSION
      ========================================================================== */
-  function openModal() {
-    if (registerModal) {
-      registerModal.classList.add('active');
-      registerModal.setAttribute('aria-hidden', 'false');
+  function scrollToRegister() {
+    if (sectionRegister) {
+      sectionRegister.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
-  function closeModal() {
-    if (registerModal) {
-      registerModal.classList.remove('active');
-      registerModal.setAttribute('aria-hidden', 'true');
-    }
-  }
-
-  window.closeModal = closeModal;
+  window.scrollToRegister = scrollToRegister;
 
   if (btnOpenRegister) {
-    btnOpenRegister.addEventListener('click', openModal);
-  }
-
-  if (btnCloseModal) {
-    btnCloseModal.addEventListener('click', closeModal);
-  }
-
-  if (registerModal) {
-    registerModal.addEventListener('click', (e) => {
-      if (e.target === registerModal) closeModal();
+    btnOpenRegister.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToRegister();
     });
   }
 
+  if (invitationCard && invitationCard !== btnOpenRegister) {
+    invitationCard.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToRegister();
+    });
+  }
+
+  if (giftToast) {
+    giftToast.style.cursor = 'pointer';
+    giftToast.addEventListener('click', scrollToRegister);
+  }
+
   window.submitForm = function () {
-    const name = document.getElementById('txtName').value;
-    const phone = document.getElementById('txtPhone').value;
+    const name = document.getElementById('txtName').value.trim();
+    const phone = document.getElementById('txtPhone').value.trim();
+
+    if (!name || !phone) return;
 
     if (registerForm) registerForm.style.display = 'none';
-    if (successBox) successBox.style.display = 'block';
+    if (successBox) {
+      successBox.style.display = 'block';
+      successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 
     triggerConfetti();
     playTone(880, 0.3, 'sine'); // A5 fanfare
