@@ -339,6 +339,8 @@ html, body {
   width: 100%;
   height: 50%;
   z-index: 11;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 98%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 98%);
 }
 
 .road-shimmer {
@@ -613,7 +615,7 @@ html, body {
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 41;
+  z-index: 20;
 }
 
 .layer-dia-chi {
@@ -866,35 +868,7 @@ html, body {
   }
 }
 
-/* --------------------------------------------------------------------------
-   TAP CUE ON INVITATION CARD
-   -------------------------------------------------------------------------- */
-.card-tap-cue {
-  position: absolute;
-  bottom: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #ffcf24, #ff9500);
-  color: #1a0836;
-  font-size: 11.5px;
-  font-weight: 800;
-  padding: 4px 14px;
-  border-radius: 999px;
-  box-shadow: 
-    0 4px 15px rgba(255, 149, 0, 0.55),
-    0 0 20px rgba(255, 207, 36, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  white-space: nowrap;
-  animation: cueBounce 2s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 20;
-  letter-spacing: 0.2px;
-}
 
-@keyframes cueBounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(5px); }
-}
 
 /* --------------------------------------------------------------------------
    SECTION 2: INLINE REGISTRATION FORM & FESTIVAL DETAILS (SCROLL-DOWN)
@@ -1421,56 +1395,57 @@ html, body {
   }
 
   .layer-dem-hoi {
-    top: 12.0%;
-    left: 3%;
-    width: 82%;
+    top: 10.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 94%;
+    max-width: 450px;
+    z-index: 9;
   }
 
   .layer-ribbon-tagline {
-    top: 28.5%;
+    top: 25.5%;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
+    width: 82%;
   }
 
+  /* Con đường: Phóng to ra để sao cho dưới chân chú Cuội và không lộ các góc (chỉ lộ đường cong) */
   .layer-cung-duong {
-    top: 36%;
-    left: 0;
-    width: 100%;
-    height: 52%;
+    top: 34.0%;
+    left: -22%;
+    width: 210%;
+    height: auto;
+    z-index: 11;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 92%, rgba(0, 0, 0, 0) 99%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 92%, rgba(0, 0, 0, 0) 99%);
   }
 
   /* Central Invitation Card: Well-proportioned, leaving clean space on both sides */
   .layer-invitation-card {
-    top: 38.5%;
+    top: 35.5%;
     left: 50%;
     transform: translateX(-50%);
-    width: 47%;
+    width: 49%;
     max-width: 250px;
     z-index: 26;
   }
 
-  .card-tap-cue {
-    font-size: 9.5px;
-    padding: 3px 10px;
-    bottom: -11px;
-  }
-
-  /* Chị Hằng: Shifted leftwards so her hair bun never overlaps the card pill text */
+  /* Chị Hằng: Vừa vặn bên trái, không chạm chữ thiệp mời, được mây che nhẹ gấu váy */
   .layer-chi-hang {
-    top: 49.5%;
-    left: -20%;
-    width: 53%;
-    max-width: 270px;
+    top: 46.0%;
+    left: -18%;
+    width: 54%;
+    max-width: 280px;
     z-index: 30;
   }
 
-  /* Chú Cuội: Balanced on the right edge framing the card */
+  /* Chú Cuội: Chân đặt ngay trên mặt đường cong, được mây che nhẹ và cuộn sau lưng */
   .layer-chu-cuoi {
-    top: 54.0%;
-    right: -13%;
-    width: 48%;
-    max-width: 250px;
+    top: 48.5%;
+    right: -8%;
+    width: 51%;
+    max-width: 270px;
     z-index: 30;
   }
 
@@ -1483,21 +1458,21 @@ html, body {
 
   /* Mooncakes along celestial road */
   .cake-3 {
-    top: 70.5%;
-    left: 36.5%;
+    top: 63.5%;
+    left: 37.0%;
     width: 8.0%;
     z-index: 33;
   }
 
   .cake-2 {
-    top: 68.5%;
-    left: 52.5%;
-    width: 13.5%;
+    top: 61.5%;
+    left: 53.0%;
+    width: 13.0%;
     z-index: 33;
   }
 
   .cake-1 {
-    top: 79.5%;
+    top: 69.5%;
     left: 55.0%;
     width: 23.0%;
     z-index: 39;
@@ -1505,40 +1480,48 @@ html, body {
 
   /* Thỏ Ngọc sitting directly on the golden cloud dome */
   .layer-tho-ngoc {
-    top: 78.5%;
-    left: 15.5%;
-    width: 21.0%;
+    top: 68.0%;
+    left: 17.0%;
+    width: 20.0%;
     z-index: 40;
   }
 
-  /* Golden Clouds - Pure flyer match, lush and vibrant */
-  .cloud-m2 {
-    bottom: 0;
-    left: -10%;
-    width: 65%;
-    z-index: 36;
-  }
-
+  /* Các đám mây vàng: Phóng to lên và bố trí che nhẹ Chị Hằng và Chú Cuội khớp mẫu flyer */
   .cloud-m4 {
-    bottom: 0;
-    left: -10%;
-    width: 132%;
-    z-index: 38;
+    bottom: 8%;
+    right: -6%;
+    width: 185%;
+    z-index: 35;
     filter: drop-shadow(0 0 25px rgba(255, 200, 30, 0.45));
   }
 
+  .cloud-m2 {
+    bottom: 9%;
+    left: -22%;
+    width: 165%;
+    z-index: 34;
+  }
+
   .cloud-m3 {
+    bottom: 5%;
+    left: -10%;
+    width: 150%;
+    z-index: 36;
+  }
+
+  .cloud-m4-base {
     bottom: 0;
-    left: 10%;
-    width: 80%;
+    left: -15%;
+    width: 165%;
     z-index: 37;
+    filter: drop-shadow(0 0 20px rgba(255, 200, 30, 0.4));
   }
 
   .layer-frame-strip {
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 41;
+    z-index: 20;
   }
 
   .layer-dia-chi {
